@@ -35,6 +35,7 @@ module "api_gateway" {
   source     = "./modules/api_gateway"
   api_name   = "contact_form_api"
   lambda_uri = module.lambda.contact_handler_invoke_arn
+  region     = "us-east-1"
 }
 
 output "api_url" {
