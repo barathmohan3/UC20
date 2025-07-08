@@ -2,8 +2,13 @@ provider "aws" {
   region = "us-east-1"
 }
 
+resource "random_id" "dynamodb_suffix" {
+  byte_length = 4
+}
+
 module "dynamodb" {
   source     = "./modules/dynamodb"
+  table_name = "contact_form_submissions"
 }
 
 module "ses" {
@@ -28,7 +33,7 @@ module "lambda" {
   runtime          = "python3.10"
   lambda_zip_path  = "lambda.zip"
   env_vars = {
-    TABLE_NAME =  module.dynamodb.dynamodb_table_name
+    TABLE_NAME =  module.dynamodb.table_name
     EMAIL_TO   = "barathmohansiva3@gmail.com"
   }
   source_arn = module.api_gateway.source_arn
