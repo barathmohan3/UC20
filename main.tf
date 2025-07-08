@@ -4,12 +4,12 @@ provider "aws" {
 
 module "dynamodb" {
   source     = "./modules/dynamodb"
-  table_name = "contact_form_submissions"
+  table_name = module.dynamodb.dynamodb_table_name
 }
 
 module "ses" {
   source = "./modules/ses"
-  email  = "barathmohan.sivas@hcltech.com"
+  email  = "barathmohansiva3@gmail.com"
 }
 
 module "iam" {
