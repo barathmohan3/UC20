@@ -9,7 +9,7 @@ module "dynamodb" {
 
 module "ses" {
   source = "./modules/ses"
-  email  = "your-verified-email@example.com"
+  email  = "barathmohan.sivas@hcltech.com"
 }
 
 module "iam" {
