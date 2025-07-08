@@ -1,3 +1,7 @@
+resource "random_id" "iam_suffix" {
+  byte_length = 4
+}
+
 resource "aws_dynamodb_table" "contact_form" {
   name           = var.table_name
   billing_mode   = "PAY_PER_REQUEST"
