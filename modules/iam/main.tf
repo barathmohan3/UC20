@@ -1,3 +1,7 @@
+resource "random_id" "iam_suffix" {
+  byte_length = 4
+}
+
 resource "aws_iam_role" "lambda_role" {
   name = "lambda_contact_role"
   assume_role_policy = jsonencode({
