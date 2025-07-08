@@ -28,7 +28,7 @@ module "lambda" {
     TABLE_NAME = "contact_form_submissions"
     EMAIL_TO   = "barathmohan.sivas@hcltech.com"
   }
-  source_arn = "arn:aws:execute-api:*:*:*/*/POST/contact"
+  source_arn = module.api_gateway.source_arn
 }
 
 module "api_gateway" {

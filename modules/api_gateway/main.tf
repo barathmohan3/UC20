@@ -36,6 +36,8 @@ resource "aws_api_gateway_stage" "prod" {
   stage_name    = "prod"
 }
 
+data "aws_caller_identity" "current" {}
+
 output "api_endpoint" {
   value = "https://${aws_api_gateway_rest_api.contact_api.id}.execute-api.${var.region}.amazonaws.com/${aws_api_gateway_stage.prod.stage_name}/contact"
 }
