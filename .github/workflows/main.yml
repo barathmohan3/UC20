@@ -36,6 +36,10 @@ jobs:
         with:
           terraform_version: 1.10.5
 
+      - name: Zip Lambda function
+        run: zip -j lambda.zip lambda/handler.py
+
+
       - name: Terraform format
         run: terraform fmt
 
