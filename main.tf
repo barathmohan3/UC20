@@ -17,9 +17,13 @@ module "iam" {
   dynamodb_arn = module.dynamodb.dynamodb_table_arn
 }
 
+resource "random_id" "lambda_suffix" {
+  byte_length = 4
+}
+
 module "lambda" {
   source           = "./modules/lambda"
-  lambda_name      = "contact_form_lambda"
+  lambda_name      = "contact_form_lambda_${random_id.lambda_suffix.hex}"
   lambda_role_arn  = module.iam.lambda_role_arn
   handler          = "handler.lambda_handler"
   runtime          = "python3.10"
