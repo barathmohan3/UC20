@@ -4,7 +4,6 @@ provider "aws" {
 
 module "dynamodb" {
   source     = "./modules/dynamodb"
-  table_name = module.dynamodb.dynamodb_table_name
 }
 
 module "ses" {
