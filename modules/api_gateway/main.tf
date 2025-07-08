@@ -28,7 +28,13 @@ resource "aws_api_gateway_integration" "lambda" {
 resource "aws_api_gateway_deployment" "deploy" {
   depends_on = [aws_api_gateway_integration.lambda]
   rest_api_id = aws_api_gateway_rest_api.contact_api.id
-  stage_name  = "prod"
+}
+
+
+resource "aws_api_gateway_stage" "prod" {
+  deployment_id = aws_api_gateway_deployment.deploy.id
+  rest_api_id   = aws_api_gateway_rest_api.contact_api.id
+  stage_name    = "prod"
 }
 
 output "api_endpoint" {
