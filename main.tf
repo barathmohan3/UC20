@@ -26,7 +26,7 @@ module "lambda" {
   lambda_zip_path  = "lambda.zip"
   env_vars = {
     TABLE_NAME = "contact_form_submissions"
-    EMAIL_TO   = "your-verified-email@example.com"
+    EMAIL_TO   = "barathmohan.sivas@hcltech.com"
   }
   source_arn = "arn:aws:execute-api:*:*:*/*/POST/contact"
 }
